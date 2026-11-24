@@ -14,6 +14,7 @@
     .card:hover { border-color: #2563eb; }
     .card small { display: block; margin-top: 8px; font-size: 14px; font-weight: normal; color: #777; }
     .soon { opacity: 0.55; pointer-events: none; }
+    .ltr { direction: ltr; unicode-bidi: isolate; }
   </style>
 </head>
 <body>
@@ -21,10 +22,10 @@
   <p class="sub">בחר שפה והתחל ללמוד, צעד אחר צעד</p>
 
   <div class="grid">
-    <a class="card" href="javascript/lesson1.html">JavaScript<small>התחל ללמוד</small></a>
-    <a class="card soon" href="#">Java<small>בקרוב</small></a>
-    <a class="card soon" href="#"><a class="card soon" href="#"><span dir="ltr">C++</span><small>בקרוב</small></a><small>בקרוב</small></a>
-    <a class="card soon" href="#">C#<small>בקרוב</small></a>
+    <a class="card" href="javascript/lesson1.html"><span class="ltr">JavaScript</span><small>התחל ללמוד</small></a>
+    <a class="card soon" href="#"><span class="ltr">Java</span><small>בקרוב</small></a>
+    <a class="card soon" href="#"><span class="ltr">C++</span><small>בקרוב</small></a>
+    <a class="card soon" href="#"><span class="ltr">C#</span><small>בקרוב</small></a>
   </div>
 </body>
 </html>
