@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>לומדים פייתון</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto; padding: 0 16px; }
+    textarea { width: 100%; height: 140px; font-family: monospace; font-size: 16px; direction: ltr; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; margin-top: 8px; }
+    pre { background: #f4f4f4; padding: 12px; direction: ltr; min-height: 40px; }
+  </style>
+</head>
+<body>
+  <h1>שיעור 1: ההדפסה הראשונה שלך</h1>
+  <p>הפונקציה <code>print()</code> מציגה טקסט על המסך. שנה את הטקסט ולחץ על "הרץ".</p>
 
+  <textarea id="code">print("שלום עולם!")</textarea><br>
+  <button id="run" disabled>טוען פייתון...</button>
+  <h3>פלט:</h3>
+  <pre id="output"></pre>
+
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+  <script>
+    const out = document.getElementById("output");
+    const btn = document.getElementById("run");
+    let pyodide;
+
+    async function init() {
+      pyodide = await loadPyodide();
+      pyodide.setStdout({ batched: (s) => { out.textContent += s + "\n"; } });
+      btn.disabled = false;
+      btn.textContent = "הרץ";
+    }
+
+    btn.onclick = async () => {
+      out.textContent = "";
+      try {
+        await pyodide.runPythonAsync(document.getElementById("code").value);
+      } catch (e) {
+        out.textContent = e.message;
+      }
+    };
+
+    init();
+  </script>
+</body>
+</html>
